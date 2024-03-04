@@ -1,0 +1,69 @@
+For Cap action
+public class CapMove : MonoBehaviour
+{
+    float moveSpeed;
+    float HorizontalInput;
+    float VerticalInput;
+    float jumpHeight;
+    Rigidbody playerRB;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        moveSpeed = 5f;
+        jumpHeight = 10;
+        playerRB = GetComponent<Rigidbody>();
+
+    }
+
+
+// Update is called once per frame
+void Update()
+
+    {
+        HorizontalInput = Input.GetAxis("Horizontal");
+        VerticalInput = Input.GetAxis("Vertical");
+        transform.Translate(HorizontalInput * moveSpeed * Time.deltaTime, 0, VerticalInput * moveSpeed * Time.deltaTime);
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            playerRB.AddForce(jumpHeight * Vector3.up, ForceMode.Impulse);
+            //transform.Translate(0, 10jumpHeight* Time.deltaTime,0);
+
+        }
+
+
+    }
+}
+For the Cube action
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        transform.Translate(0, 0, 75 * Time.deltaTime);
+        transform.Rotate(0, 0, 75);
+    }
+
+
+    // Update is called once per frame
+    void Update()
+    {
+        transform.Translate(0, 0, 75);
+        transform.Rotate(0, 0, 75 * Time.deltaTime);
+    }
+For the Sphere action
+/ Start is called before the first frame update
+    void Start()
+    {
+        Debug.Log(transform);
+        transform.Translate(5, 0, 0);
+        transform.Rotate(0, Time.deltaTime*6, 0);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        transform.Translate(5, 0, 0);
+        transform.Rotate(0,Time.deltaTime*6, 0);
+    }
+}
